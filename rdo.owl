@@ -1,0 +1,791 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY rdo "http://purl.org/see/rdo#" >
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY swrl "http://www.w3.org/2003/11/swrl#" >
+    <!ENTITY dc "http://purl.org/dc/elements/1.1/" >
+    <!ENTITY swrlb "http://www.w3.org/2003/11/swrlb#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY protege "http://protege.stanford.edu/plugins/owl/protege#" >
+    <!ENTITY xsp "http://www.owl-ontologies.com/2005/08/07/xsp.owl#" >
+]>
+
+
+<rdf:RDF xmlns="http://purl.org/see/rdo#"
+     xml:base="http://purl.org/see/rdo"
+     xmlns:rdo="http://purl.org/see/rdo#"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+     xmlns:protege="http://protege.stanford.edu/plugins/owl/protege#"
+     xmlns:xsp="http://www.owl-ontologies.com/2005/08/07/xsp.owl#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <owl:Ontology rdf:about="http://purl.org/see/rdo">
+        <dc:creator>Christian Bölling
+christian.boelling@charite.de
+christian.a.boelling@gmail.com</dc:creator>
+        <dc:contributor>Michael Weidlich
+michael.weidlich@charite.de</dc:contributor>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:AnnotationProperty rdf:about="&rdo;is_represented_by">
+        <rdfs:label xml:lang="en">is represented by</rdfs:label>
+        <rdfs:comment xml:lang="en">Used provisionally for the relation between an OWL axiom and the assertion instance used to represent that axiom.</rdfs:comment>
+    </owl:AnnotationProperty>
+    <owl:AnnotationProperty rdf:about="&rdo;represents_axiom">
+        <rdfs:label xml:lang="en">represents axiom</rdfs:label>
+        <rdfs:comment xml:lang="en">used provisonally as relation between an assertion instance and the axiom it represents.</rdfs:comment>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/see/rdo#asserts -->
+
+    <owl:ObjectProperty rdf:about="&rdo;asserts">
+        <rdfs:comment xml:lang="en">The object property rdo:asserts relates an assertion to what is asserted i.e. to the proposition which is put forward as being true or an agent to a proposition put forward as being true by the agent or a report to a proposition put forward as being true in that report.</rdfs:comment>
+        <rdfs:comment xml:lang="en">alternative labels: claims, posits, presents as true</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/see/rdo#bears -->
+
+    <owl:ObjectProperty rdf:about="&rdo;bears">
+        <rdfs:comment xml:lang="en">The object property rdo:bears relates a bearer of a role to the role borne.</rdfs:comment>
+        <owl:inverseOf rdf:resource="&rdo;has_bearer"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/see/rdo#expresses_proposition -->
+
+    <owl:ObjectProperty rdf:about="&rdo;expresses_proposition">
+        <rdfs:comment xml:lang="en">The object property rdo:expresses_proposition relates a text to a proposition expressed in the text.</rdfs:comment>
+        <rdfs:range rdf:resource="&rdo;proposition"/>
+        <rdfs:domain rdf:resource="&rdo;text"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/see/rdo#has_author -->
+
+    <owl:ObjectProperty rdf:about="&rdo;has_author">
+        <rdfs:comment xml:lang="en">The object property rdo:has_author relates a report or part of a report to an agent having an author role for the report.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/see/rdo#has_bearer -->
+
+    <owl:ObjectProperty rdf:about="&rdo;has_bearer">
+        <rdfs:comment xml:lang="en">The object property rdo:has_bearer relates a role to its bearer.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/see/rdo#has_conclusion -->
+
+    <owl:ObjectProperty rdf:about="&rdo;has_conclusion">
+        <rdfs:comment xml:lang="en">The object property: rdo:has_conclusion relates an argument to an assertion iff the latter is a conclusion in that argument.</rdfs:comment>
+        <rdfs:domain rdf:resource="&rdo;argument"/>
+        <rdfs:range rdf:resource="&rdo;assertion"/>
+        <owl:inverseOf rdf:resource="&rdo;is_conclusion_of"/>
+        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/see/rdo#has_conjunctive_part -->
+
+    <owl:ObjectProperty rdf:about="&rdo;has_conjunctive_part">
+        <rdfs:comment xml:lang="en">The object property rdo:has_conjunctive_part relates an assertion encompassing all premises in an argument to a component assertion.</rdfs:comment>
+        <rdfs:range rdf:resource="&rdo;assertion"/>
+        <rdfs:domain rdf:resource="&rdo;assertion"/>
+        <owl:inverseOf rdf:resource="&rdo;is_conjunctive_part_of"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/see/rdo#has_lexical_part -->
+
+    <owl:ObjectProperty rdf:about="&rdo;has_lexical_part">
+        <rdfs:comment xml:lang="en">The object property rdo:has_lexical_part relates a report to a text which is part of the entire narrative in which the report is expressed.</rdfs:comment>
+        <rdfs:domain rdf:resource="&rdo;report"/>
+        <rdfs:range rdf:resource="&rdo;text"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/see/rdo#has_part -->
+
+    <owl:ObjectProperty rdf:about="&rdo;has_part"/>
+    
+
+
+    <!-- http://purl.org/see/rdo#has_premise -->
+
+    <owl:ObjectProperty rdf:about="&rdo;has_premise">
+        <rdfs:comment xml:lang="en">The object property: rdo:has_premise relates an argument to an assertion iff the latter is a premise in that argument.</rdfs:comment>
+        <rdfs:domain rdf:resource="&rdo;argument"/>
+        <rdfs:range rdf:resource="&rdo;assertion"/>
+        <owl:inverseOf rdf:resource="&rdo;is_premise_of"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/see/rdo#is_agent_asserting -->
+
+    <owl:ObjectProperty rdf:about="&rdo;is_agent_asserting">
+        <rdfs:comment xml:lang="en">The object property rdo:is_agent_asserting relates an agent T to a proposition P iff T puts forward P as true. This is the case iff there is an assertion A so that T &apos;makes assertion&apos; A and A &apos;is assertion asserting&apos; P.</rdfs:comment>
+        <rdfs:domain rdf:resource="&rdo;agent"/>
+        <rdfs:subPropertyOf rdf:resource="&rdo;asserts"/>
+        <rdfs:range rdf:resource="&rdo;proposition"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/see/rdo#is_asserted_by -->
+
+    <owl:ObjectProperty rdf:about="&rdo;is_asserted_by">
+        <rdfs:comment xml:lang="en">The object property rdo:is_asserted_by relates a proposition to an agent iff that proposition is asserted by the agent.</rdfs:comment>
+        <rdfs:range rdf:resource="&rdo;agent"/>
+        <owl:inverseOf rdf:resource="&rdo;is_agent_asserting"/>
+        <rdfs:domain rdf:resource="&rdo;proposition"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="&rdo;is_asserted_in_assertion"/>
+            <rdf:Description rdf:about="&rdo;is_assertion_made_by"/>
+        </owl:propertyChainAxiom>
+    </owl:ObjectProperty>
+    <owl:Axiom>
+        <rdfs:comment xml:lang="en">This property chain is used to infer that a proposition asserted in an assertion which is an assertion made by an agent is asserted by that agent.</rdfs:comment>
+        <owl:annotatedSource rdf:resource="&rdo;is_asserted_by"/>
+        <owl:annotatedProperty rdf:resource="&owl;propertyChainAxiom"/>
+        <owl:annotatedTarget rdf:parseType="Collection">
+            <rdf:Description rdf:about="&rdo;is_asserted_in_assertion"/>
+            <rdf:Description rdf:about="&rdo;is_assertion_made_by"/>
+        </owl:annotatedTarget>
+    </owl:Axiom>
+    
+
+
+    <!-- http://purl.org/see/rdo#is_asserted_in -->
+
+    <owl:ObjectProperty rdf:about="&rdo;is_asserted_in">
+        <rdfs:comment xml:lang="en">The object property rdo:is_asserted_in relates a proposition to an assertion or a report in which it is asserted.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/see/rdo#is_asserted_in_assertion -->
+
+    <owl:ObjectProperty rdf:about="&rdo;is_asserted_in_assertion">
+        <rdfs:comment xml:lang="en">The object property rdo:is_asserted_in_assertion relates a proposition to an assertion. The relation between proposition P and assertion A obtains iff P is asserted in A.</rdfs:comment>
+        <rdfs:range rdf:resource="&rdo;assertion"/>
+        <rdfs:subPropertyOf rdf:resource="&rdo;is_asserted_in"/>
+        <owl:inverseOf rdf:resource="&rdo;is_assertion_asserting"/>
+        <rdfs:domain rdf:resource="&rdo;proposition"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/see/rdo#is_asserted_in_report -->
+
+    <owl:ObjectProperty rdf:about="&rdo;is_asserted_in_report">
+        <rdfs:comment xml:lang="en">The object property rdo:is_asserted_in_report relates a proposition P to a report R iff P is asserted in R.</rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="&rdo;is_asserted_in"/>
+        <owl:inverseOf rdf:resource="&rdo;is_report_asserting"/>
+        <rdfs:domain rdf:resource="&rdo;proposition"/>
+        <rdfs:range rdf:resource="&rdo;report_part"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/see/rdo#is_assertion_asserting -->
+
+    <owl:ObjectProperty rdf:about="&rdo;is_assertion_asserting">
+        <rdfs:comment xml:lang="en">The object property rdo:is_assertion_asserting relates an assertion A to a proposition P iff A puts forward P as true.</rdfs:comment>
+        <rdfs:domain rdf:resource="&rdo;assertion"/>
+        <rdfs:subPropertyOf rdf:resource="&rdo;asserts"/>
+        <rdfs:range rdf:resource="&rdo;proposition"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/see/rdo#is_assertion_based_on -->
+
+    <owl:ObjectProperty rdf:about="&rdo;is_assertion_based_on">
+        <rdfs:comment xml:lang="en">The object property rdo:is_assertion_based_on relates an assertion to a text or a report. The relation obtains between assertion A and an entity E if  A &apos;is assertion based on text&apos; E or if assertion A &apos;is assertion based on report&apos; E.
+
+The relation allows to subsume all texts and reports on which, directly or indirectly, an assertion is based.</rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/see/rdo#is_assertion_based_on_report -->
+
+    <owl:ObjectProperty rdf:about="&rdo;is_assertion_based_on_report">
+        <rdfs:comment xml:lang="en">The object property rdo:is_assertion_based_on_report relates an assertion to a report. This relation obtains between assertion A and report R iff A &apos;is assertion made in&apos; R or A &apos;is inferred from&apos; assertion A* and A* &apos;is assertion made in&apos; R.
+
+The relation allows to subsume all reports on which, directly or indirectly, an assertion is based.</rdfs:comment>
+        <rdfs:domain rdf:resource="&rdo;assertion"/>
+        <rdfs:subPropertyOf rdf:resource="&rdo;is_assertion_based_on"/>
+        <rdfs:range rdf:resource="&rdo;report_part"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="&rdo;is_inferred_from"/>
+            <rdf:Description rdf:about="&rdo;is_assertion_made_in"/>
+        </owl:propertyChainAxiom>
+    </owl:ObjectProperty>
+    <owl:Axiom>
+        <rdfs:comment xml:lang="en">This property chain is used to infer that if assertion A &apos;is inferred from&apos; assertion A* and A* &apos;is assertion made in&apos; report R then A &apos;is assertion based on report&apos; R.
+
+This property chain enables subsuming all reports on which an assertion is based directly or indirectly.</rdfs:comment>
+        <owl:annotatedSource rdf:resource="&rdo;is_assertion_based_on_report"/>
+        <owl:annotatedProperty rdf:resource="&owl;propertyChainAxiom"/>
+        <owl:annotatedTarget rdf:parseType="Collection">
+            <rdf:Description rdf:about="&rdo;is_inferred_from"/>
+            <rdf:Description rdf:about="&rdo;is_assertion_made_in"/>
+        </owl:annotatedTarget>
+    </owl:Axiom>
+    
+
+
+    <!-- http://purl.org/see/rdo#is_assertion_based_on_text -->
+
+    <owl:ObjectProperty rdf:about="&rdo;is_assertion_based_on_text">
+        <rdfs:comment xml:lang="en">The object property rdo:is_assertion_based_on_text relates an assertion to a text. This relation obtains between assertion A and text T iff A &apos;is assertion expressed as&apos; T or A &apos;is inferred from&apos; A* and A* &apos;is assertion expressed as&apos; T.
+
+The relation allows to infer all texts on which, directly or indirectly, an assertion is based.</rdfs:comment>
+        <rdfs:domain rdf:resource="&rdo;assertion"/>
+        <rdfs:subPropertyOf rdf:resource="&rdo;is_assertion_based_on"/>
+        <rdfs:range rdf:resource="&rdo;text"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="&rdo;is_inferred_from"/>
+            <rdf:Description rdf:about="&rdo;is_assertion_expressed_in"/>
+        </owl:propertyChainAxiom>
+    </owl:ObjectProperty>
+    <owl:Axiom>
+        <rdfs:comment xml:lang="en">This property chain is used to infer that if assertion A &apos;is inferred from&apos; assertion A* and A* &apos;is assertion expressed in&apos; text T then A &apos;is assertion based on text&apos; T.
+
+This property chain enables subsuming all text on which an assertion is based directly or indirectly.</rdfs:comment>
+        <owl:annotatedSource rdf:resource="&rdo;is_assertion_based_on_text"/>
+        <owl:annotatedProperty rdf:resource="&owl;propertyChainAxiom"/>
+        <owl:annotatedTarget rdf:parseType="Collection">
+            <rdf:Description rdf:about="&rdo;is_inferred_from"/>
+            <rdf:Description rdf:about="&rdo;is_assertion_expressed_in"/>
+        </owl:annotatedTarget>
+    </owl:Axiom>
+    
+
+
+    <!-- http://purl.org/see/rdo#is_assertion_expressed_in -->
+
+    <owl:ObjectProperty rdf:about="&rdo;is_assertion_expressed_in">
+        <rdfs:comment xml:lang="en">The object property rdo:is_assertion_expressed_in relates an assertion to a text. This relation obtains between assertion A and text T iff there exists a report part R so that A &apos;is assertion made in&apos; R and R &apos;is expressed as&apos; T.
+
+This relation enables linking assertions to texts without explicitly creating report parts as entities of their own.</rdfs:comment>
+        <rdfs:domain rdf:resource="&rdo;assertion"/>
+        <rdfs:range rdf:resource="&rdo;text"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/see/rdo#is_assertion_made_by -->
+
+    <owl:ObjectProperty rdf:about="&rdo;is_assertion_made_by">
+        <rdfs:comment xml:lang="en">The object property rdo:is_assertion_made_by relates an assertion to an agent making the assertion.</rdfs:comment>
+        <rdfs:range rdf:resource="&rdo;agent"/>
+        <rdfs:domain rdf:resource="&rdo;assertion"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="&rdo;is_assertion_made_in"/>
+            <rdf:Description rdf:about="&rdo;has_author"/>
+        </owl:propertyChainAxiom>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="&rdo;is_conjunctive_part_of"/>
+            <rdf:Description rdf:about="&rdo;is_assertion_made_by"/>
+        </owl:propertyChainAxiom>
+    </owl:ObjectProperty>
+    <owl:Axiom>
+        <rdfs:comment xml:lang="en">An assertion made in some report will be inferred to be made by any of the authors.</rdfs:comment>
+        <owl:annotatedSource rdf:resource="&rdo;is_assertion_made_by"/>
+        <owl:annotatedProperty rdf:resource="&owl;propertyChainAxiom"/>
+        <owl:annotatedTarget rdf:parseType="Collection">
+            <rdf:Description rdf:about="&rdo;is_assertion_made_in"/>
+            <rdf:Description rdf:about="&rdo;has_author"/>
+        </owl:annotatedTarget>
+    </owl:Axiom>
+    
+
+
+    <!-- http://purl.org/see/rdo#is_assertion_made_in -->
+
+    <owl:ObjectProperty rdf:about="&rdo;is_assertion_made_in">
+        <rdfs:comment xml:lang="en">The object property rdo:is_assertion_made_in relates an assertion to a report or part of a report iff that assertion is made in that report / in that part of a report.
+
+Note that any assertion related to a report by this property will be inferred to be made by any of the authors of the report.</rdfs:comment>
+        <rdfs:domain rdf:resource="&rdo;assertion"/>
+        <rdfs:range rdf:resource="&rdo;report_part"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="&rdo;is_assertion_made_in"/>
+            <rdf:Description rdf:about="&rdo;is_expressed_as"/>
+            <rdf:Description rdf:about="&rdo;is_lexical_part_of"/>
+        </owl:propertyChainAxiom>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="&rdo;is_conjunctive_part_of"/>
+            <rdf:Description rdf:about="&rdo;is_assertion_made_in"/>
+        </owl:propertyChainAxiom>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="&rdo;is_assertion_expressed_in"/>
+            <rdf:Description rdf:about="&rdo;is_lexical_part_of"/>
+        </owl:propertyChainAxiom>
+    </owl:ObjectProperty>
+    <owl:Axiom>
+        <rdfs:comment xml:lang="en">An assertion expressed in some patch of text that is part of the lexical representation of a report is inferred to be made in the report.
+
+This property chain bypasses the need to create report parts as entities of their own when an assertion is related to a patch of text and a report.</rdfs:comment>
+        <owl:annotatedSource rdf:resource="&rdo;is_assertion_made_in"/>
+        <owl:annotatedProperty rdf:resource="&owl;propertyChainAxiom"/>
+        <owl:annotatedTarget rdf:parseType="Collection">
+            <rdf:Description rdf:about="&rdo;is_assertion_expressed_in"/>
+            <rdf:Description rdf:about="&rdo;is_lexical_part_of"/>
+        </owl:annotatedTarget>
+    </owl:Axiom>
+    <owl:Axiom>
+        <rdfs:comment xml:lang="en">This property chain is used to infer that an assertion made in a report part which is expressed as a patch of text which is a lexical part of a report is made in the report.</rdfs:comment>
+        <owl:annotatedSource rdf:resource="&rdo;is_assertion_made_in"/>
+        <owl:annotatedProperty rdf:resource="&owl;propertyChainAxiom"/>
+        <owl:annotatedTarget rdf:parseType="Collection">
+            <rdf:Description rdf:about="&rdo;is_assertion_made_in"/>
+            <rdf:Description rdf:about="&rdo;is_expressed_as"/>
+            <rdf:Description rdf:about="&rdo;is_lexical_part_of"/>
+        </owl:annotatedTarget>
+    </owl:Axiom>
+    
+
+
+    <!-- http://purl.org/see/rdo#is_author_of -->
+
+    <owl:ObjectProperty rdf:about="&rdo;is_author_of">
+        <rdfs:comment xml:lang="en">The object property rdo:is_author_of relates an agent to a report or a part of a report of which the agent is an author.</rdfs:comment>
+        <owl:inverseOf rdf:resource="&rdo;has_author"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="&rdo;is_author_of"/>
+            <rdf:Description rdf:about="&rdo;is_part_of"/>
+        </owl:propertyChainAxiom>
+    </owl:ObjectProperty>
+    <owl:Axiom>
+        <rdfs:comment xml:lang="en">This property chain is used to infer that an author of a part of a report is also author of the entire report.</rdfs:comment>
+        <owl:annotatedSource rdf:resource="&rdo;is_author_of"/>
+        <owl:annotatedProperty rdf:resource="&owl;propertyChainAxiom"/>
+        <owl:annotatedTarget rdf:parseType="Collection">
+            <rdf:Description rdf:about="&rdo;is_author_of"/>
+            <rdf:Description rdf:about="&rdo;is_part_of"/>
+        </owl:annotatedTarget>
+    </owl:Axiom>
+    
+
+
+    <!-- http://purl.org/see/rdo#is_conclusion_of -->
+
+    <owl:ObjectProperty rdf:about="&rdo;is_conclusion_of">
+        <rdfs:comment xml:lang="en">The object property: rdo:is_conclusion_of relates an assertion to an argument iff the former is a conclusion in that argument.</rdfs:comment>
+        <rdfs:range rdf:resource="&rdo;argument"/>
+        <rdfs:domain rdf:resource="&rdo;assertion"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/see/rdo#is_conjunctive_part_of -->
+
+    <owl:ObjectProperty rdf:about="&rdo;is_conjunctive_part_of">
+        <rdfs:comment xml:lang="en">The object property rdo:is_conjunctive_part_of relates an assertion that is a premise in an argument to the assertion encompassing of the entire set of premises in that argument</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/see/rdo#is_directly_inferred_from -->
+
+    <owl:ObjectProperty rdf:about="&rdo;is_directly_inferred_from">
+        <rdfs:comment xml:lang="en">The object property rdo:is_directly_inferred_from relates an assertion to another assertion iff the the truth of what is asserted in the former (the conclusion) is inferred from the truth of what is asserted in the latter (the premises). Put differently, if the truth of the premises alleges to give reason to believe the conclusion is true. The relation obtains whenever an agent performs a corresponding act of inference.</rdfs:comment>
+        <rdfs:range rdf:resource="&rdo;assertion"/>
+        <rdfs:domain rdf:resource="&rdo;assertion"/>
+        <rdfs:subPropertyOf rdf:resource="&rdo;is_inferred_from"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="&rdo;is_directly_inferred_from"/>
+            <rdf:Description rdf:about="&rdo;has_conjunctive_part"/>
+        </owl:propertyChainAxiom>
+    </owl:ObjectProperty>
+    <owl:Axiom>
+        <rdfs:comment xml:lang="en">This property chain is used to subsume all assertions including conjunctive parts of assertions from which a given assertion is direcctly inferred.</rdfs:comment>
+        <owl:annotatedSource rdf:resource="&rdo;is_directly_inferred_from"/>
+        <owl:annotatedProperty rdf:resource="&owl;propertyChainAxiom"/>
+        <owl:annotatedTarget rdf:parseType="Collection">
+            <rdf:Description rdf:about="&rdo;is_directly_inferred_from"/>
+            <rdf:Description rdf:about="&rdo;has_conjunctive_part"/>
+        </owl:annotatedTarget>
+    </owl:Axiom>
+    
+
+
+    <!-- http://purl.org/see/rdo#is_expressed_as -->
+
+    <owl:ObjectProperty rdf:about="&rdo;is_expressed_as">
+        <rdfs:comment xml:lang="en">The object property rdo:is_expressed_as relates a report or a part of a report to the text as which it is expressed.</rdfs:comment>
+        <rdfs:domain rdf:resource="&rdo;report_part"/>
+        <rdfs:range rdf:resource="&rdo;text"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/see/rdo#is_inferred_from -->
+
+    <owl:ObjectProperty rdf:about="&rdo;is_inferred_from">
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+        <rdfs:comment xml:lang="en">The object property rdo:is_inferred_from relates an assertion to another assertion iff the truth of what is asserted in the former is concluded, directly or indirectly, positing the truth of what is asserted in the latter.
+
+This relation is, in contrast to its sub-property rdo:is_directly_inferred_from transitive and allows to construct inference trees, whereas rdo:is_directly_inferred_from is intended for representation of individual acts of inference as part of a specific narrative in a scientifc report.</rdfs:comment>
+        <rdfs:domain rdf:resource="&rdo;assertion"/>
+        <rdfs:range rdf:resource="&rdo;assertion"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/see/rdo#is_lexical_part_of -->
+
+    <owl:ObjectProperty rdf:about="&rdo;is_lexical_part_of">
+        <rdfs:comment xml:lang="en">The object property rdo:is_lexical_part_of relates patches of text which are part of the entire narrative in which a report is expressed to the report.</rdfs:comment>
+        <owl:inverseOf rdf:resource="&rdo;has_lexical_part"/>
+        <rdfs:range rdf:resource="&rdo;report_part"/>
+        <rdfs:domain rdf:resource="&rdo;text"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/see/rdo#is_part_of -->
+
+    <owl:ObjectProperty rdf:about="&rdo;is_part_of">
+        <rdfs:comment xml:lang="en">The object property rdo:part_of relates parts of a report to the whole report.</rdfs:comment>
+        <owl:inverseOf rdf:resource="&rdo;has_part"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/see/rdo#is_premise_of -->
+
+    <owl:ObjectProperty rdf:about="&rdo;is_premise_of">
+        <rdfs:comment xml:lang="en">The object property: rdo:is_premise_of relates an assertion to an argument iff the former is a premise in that argument.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/see/rdo#is_proposition_expressed_in -->
+
+    <owl:ObjectProperty rdf:about="&rdo;is_proposition_expressed_in">
+        <rdfs:comment xml:lang="en">The object property rdo:is_expressed_in relates a proposition to a text expressing the proposition.</rdfs:comment>
+        <owl:inverseOf rdf:resource="&rdo;expresses_proposition"/>
+        <rdfs:domain rdf:resource="&rdo;proposition"/>
+        <rdfs:range rdf:resource="&rdo;text"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/see/rdo#is_realized_in -->
+
+    <owl:ObjectProperty rdf:about="&rdo;is_realized_in">
+        <rdfs:comment xml:lang="en">The object property rdo:is_realized_in relates premise, conclusion, agent and other roles to the processes in which these roles are realized.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/see/rdo#is_report_asserting -->
+
+    <owl:ObjectProperty rdf:about="&rdo;is_report_asserting">
+        <rdfs:comment xml:lang="en">The object property rdo:is_report_asserting relates a report part R to a proposition P. The relation obtains iff R puts forward P as true.</rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="&rdo;asserts"/>
+        <rdfs:range rdf:resource="&rdo;proposition"/>
+        <rdfs:domain rdf:resource="&rdo;report_part"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/see/rdo#makes_assertion -->
+
+    <owl:ObjectProperty rdf:about="&rdo;makes_assertion">
+        <rdfs:comment xml:lang="en">The object property rdo:makes_assertion relates an agent to an assertion made by the agent or a report or a part of a report to an assertion made in it.</rdfs:comment>
+        <owl:inverseOf rdf:resource="&rdo;is_assertion_made_by"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/see/rdo#realizes -->
+
+    <owl:ObjectProperty rdf:about="&rdo;realizes">
+        <rdfs:comment xml:lang="en">The object property rdo:realizes relates processes in which premise, conclusion or agent roles are realized to such roles.</rdfs:comment>
+        <owl:inverseOf rdf:resource="&rdo;is_realized_in"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/see/rdo#act_of_assertion -->
+
+    <owl:Class rdf:about="&rdo;act_of_assertion">
+        <rdfs:label>act of assertion</rdfs:label>
+        <rdfs:comment xml:lang="en">The class rdo:act_of_assertion represents particular acts effected by particular agents on a particular occasion (e.g. as authors of a scientific article) of putting forward a particular proposition as true.
+
+Note that the term &apos;assertion&apos; carries an ambiguity in that it can refer to the process of putting forward a proposition as true (&apos;asserting&apos;) and it can refer to the resulting claim (&apos;the assertion&apos;). In RDO, the class act_of_assertion is used to represent the former and the class assertion is used to represent the latter. Understood in this way, the terms &apos;assertion&apos; and &apos;claim&apos; are interchangeable in many contexts in the representation of scientific reasoning which is why &apos;claim&apos; is presented as an alternative label to the class rdo:assertion.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/see/rdo#act_of_inference -->
+
+    <owl:Class rdf:about="&rdo;act_of_inference">
+        <rdfs:label xml:lang="en">act of inference</rdfs:label>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&rdo;realizes"/>
+                <owl:someValuesFrom rdf:resource="&rdo;premise_role"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&rdo;has_part"/>
+                <owl:someValuesFrom rdf:resource="&rdo;act_of_assertion"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&rdo;realizes"/>
+                <owl:someValuesFrom rdf:resource="&rdo;agent_role"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&rdo;realizes"/>
+                <owl:onClass rdf:resource="&rdo;conclusion_role"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">The class rdo:act_of_inference represents processes of drawing a conclusion from a set of premises. Acts of inference include an act of assertion in which the proposition that is the conclusion is put forward as true on the basis of the asserted premises. </rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/see/rdo#agent -->
+
+    <owl:Class rdf:about="&rdo;agent">
+        <rdfs:label xml:lang="en">agent</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&rdo;bears"/>
+                <owl:someValuesFrom rdf:resource="&rdo;agent_role"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:comment xml:lang="en">Instances of rdo:agent represent individual persons, corporate bodies or information processing devices participating in the provision of data on a subject of inquiry.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/see/rdo#agent_role -->
+
+    <owl:Class rdf:about="&rdo;agent_role">
+        <rdfs:label xml:lang="en">agent role</rdfs:label>
+        <rdfs:comment xml:lang="en">An rdo:agent_role is a role borne by an individual person, a corporate body or an information processing device by virtue of participating in the provision of data on a subject of inquiry.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/see/rdo#argument -->
+
+    <owl:Class rdf:about="&rdo;argument">
+        <rdfs:label rdf:datatype="&xsd;string">argument</rdfs:label>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&rdo;has_conclusion"/>
+                <owl:someValuesFrom rdf:resource="&rdo;assertion"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">The class rdo:argument represents arguments i.e. a series of assertions, one of which is the conclusion, the rest of
+which are premises, such that the premises allege to provide ground or reason to believe the proposition put forward in the conclusion is true.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/see/rdo#assertion -->
+
+    <owl:Class rdf:about="&rdo;assertion">
+        <rdfs:label rdf:datatype="&xsd;string">assertion</rdfs:label>
+        <rdfs:label rdf:datatype="&xsd;string">claim</rdfs:label>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&rdo;is_assertion_asserting"/>
+                <owl:someValuesFrom rdf:resource="&rdo;proposition"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">The class rdo:assertion represents particular claims made by particular agents on a particular occasion (e.g. as authors of a scientific article) that a particular proposition is true.
+
+Note that the term &apos;assertion&apos; carries an ambiguity in that it can refer to the process of putting forward a proposition as true (&apos;asserting&apos;) and it can refer to the resulting claim (&apos;the assertion&apos;). In RDO, the class act_of_assertion is used to represent the former and the class assertion is used to represent the latter. Understood in this way, the terms &apos;assertion&apos; and &apos;claim&apos; are interchangeable in many contexts in the representation of scientific reasoning which is why &apos;claim&apos; is presented as an alternative label to the class rdo:assertion.</rdfs:comment>
+        <rdfs:seeAlso>http://www.blackwellreference.com/public/tocnode?id=g9781405106795_chunk_g97814051067952_ss1-239</rdfs:seeAlso>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/see/rdo#author_role -->
+
+    <owl:Class rdf:about="&rdo;author_role">
+        <rdfs:label xml:lang="en">author role</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&rdo;agent_role"/>
+        <rdfs:comment xml:lang="en">An rdo:author_role is an agent role borne by an agent that is an author of a report.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/see/rdo#conclusion_role -->
+
+    <owl:Class rdf:about="&rdo;conclusion_role">
+        <rdfs:label xml:lang="en">conclusion role</rdfs:label>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&rdo;has_bearer"/>
+                <owl:someValuesFrom rdf:resource="&rdo;assertion"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>An rdo:conclusion_role is borne by an assertion iff that assertion is used as a conclusion in an argument.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/see/rdo#curator_role -->
+
+    <owl:Class rdf:about="&rdo;curator_role">
+        <rdfs:label xml:lang="en">curator role</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&rdo;agent_role"/>
+        <rdfs:comment xml:lang="en">An rdo:curator_role is an agent role borne by an agent iff that agent curates some information relevant to a subject of inquiry.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/see/rdo#person -->
+
+    <owl:Class rdf:about="&rdo;person">
+        <rdfs:label xml:lang="en">person</rdfs:label>
+        <rdfs:comment xml:lang="en">The class rdo:person represents individual persons.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/see/rdo#premise_role -->
+
+    <owl:Class rdf:about="&rdo;premise_role">
+        <rdfs:label xml:lang="en">premise role</rdfs:label>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&rdo;has_bearer"/>
+                <owl:someValuesFrom rdf:resource="&rdo;assertion"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>An rdo:premise_role is borne by an assertion iff that assertion is used as a premise in an argument.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/see/rdo#proposition -->
+
+    <owl:Class rdf:about="&rdo;proposition">
+        <rdfs:label xml:lang="en">proposition</rdfs:label>
+        <rdfs:comment xml:lang="en">The class rdo:proposition represents propositions i.e. the sharable objects of propositional attitudes like belief or desire and the bearers of truth values. As truth bearers they are either true or false. They are taken to represent the semantic content of sentences or larger lexical entities formulated in some natural or artificial language.
+</rdfs:comment>
+        <rdfs:seeAlso rdf:resource="http://plato.stanford.edu/entries/propositions/"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/see/rdo#report -->
+
+    <owl:Class rdf:about="&rdo;report">
+        <rdfs:label xml:lang="en">report</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&rdo;report_part"/>
+        <rdfs:seeAlso>http://www.businessdictionary.com/definition/report.html</rdfs:seeAlso>
+        <rdfs:seeAlso>http://dictionary.reference.com/browse/report</rdfs:seeAlso>
+        <rdfs:comment xml:lang="en">The class rdo:report represents reports i.e accounts or statements intended to accurately describe in detail an event, situation, or the like, usually as the result of observation, inquiry, etc. and containing information organized in a narrative, graphic, or tabular form, prepared on ad hoc, periodic, recurring, regular, or as required basis. Reports may refer to specific periods, events, occurrences, or subjects, and may be communicated or presented in oral or written form.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/see/rdo#report_part -->
+
+    <owl:Class rdf:about="&rdo;report_part">
+        <rdfs:label xml:lang="en">report part</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&rdo;is_part_of"/>
+                <owl:someValuesFrom rdf:resource="&rdo;report"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:comment xml:lang="en">A part of a report, i.e. any continuous or discontinuous part of the narrative. As such it may consist of or contain figures, tables, supplementary information or parts of it.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/see/rdo#text -->
+
+    <owl:Class rdf:about="&rdo;text">
+        <rdfs:label xml:lang="en">text</rdfs:label>
+        <rdfs:comment xml:lang="en">The class rdo:text represents texts i.e. extended structures of syntactic units [i.e. text as super-sentence] such as words, groups, and clauses and textual units that is marked by coherence among the elements and formulated in some natural or artificial language.</rdfs:comment>
+    </owl:Class>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.3.1957) http://owlapi.sourceforge.net -->
+
