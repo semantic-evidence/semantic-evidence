@@ -365,13 +365,13 @@ Note that any assertion related to a report by this property will be inferred to
         <rdfs:domain rdf:resource="&rdo;assertion"/>
         <rdfs:range rdf:resource="&rdo;report_part"/>
         <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="&rdo;is_conjunctive_part_of"/>
+            <rdf:Description rdf:about="&rdo;is_assertion_made_in"/>
+        </owl:propertyChainAxiom>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
             <rdf:Description rdf:about="&rdo;is_assertion_made_in"/>
             <rdf:Description rdf:about="&rdo;is_expressed_as"/>
             <rdf:Description rdf:about="&rdo;is_lexical_part_of"/>
-        </owl:propertyChainAxiom>
-        <owl:propertyChainAxiom rdf:parseType="Collection">
-            <rdf:Description rdf:about="&rdo;is_conjunctive_part_of"/>
-            <rdf:Description rdf:about="&rdo;is_assertion_made_in"/>
         </owl:propertyChainAxiom>
         <owl:propertyChainAxiom rdf:parseType="Collection">
             <rdf:Description rdf:about="&rdo;is_assertion_expressed_in"/>
@@ -593,12 +593,6 @@ Note that the term &apos;assertion&apos; carries an ambiguity in that it can ref
         <rdfs:label xml:lang="en">act of inference</rdfs:label>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&rdo;realizes"/>
-                <owl:someValuesFrom rdf:resource="&rdo;premise_role"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
                 <owl:onProperty rdf:resource="&rdo;has_part"/>
                 <owl:someValuesFrom rdf:resource="&rdo;act_of_assertion"/>
             </owl:Restriction>
@@ -607,6 +601,12 @@ Note that the term &apos;assertion&apos; carries an ambiguity in that it can ref
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&rdo;realizes"/>
                 <owl:someValuesFrom rdf:resource="&rdo;agent_role"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&rdo;realizes"/>
+                <owl:someValuesFrom rdf:resource="&rdo;premise_role"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -781,7 +781,9 @@ Note that the term &apos;assertion&apos; carries an ambiguity in that it can ref
 
     <owl:Class rdf:about="&rdo;text">
         <rdfs:label xml:lang="en">text</rdfs:label>
-        <rdfs:comment xml:lang="en">The class rdo:text represents texts i.e. extended structures of syntactic units [i.e. text as super-sentence] such as words, groups, and clauses and textual units that is marked by coherence among the elements and formulated in some natural or artificial language.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The class rdo:text represents texts i.e. extended structures of syntactic units such as words, groups, and clauses and textual units that is marked by coherence among the elements and completion and formulated in some natural or artificial language.
+
+This definition is based on Werlich, E. A text grammar of English Heidelberg: Quelle &amp; Meyer, 1983</rdfs:comment>
     </owl:Class>
 </rdf:RDF>
 
