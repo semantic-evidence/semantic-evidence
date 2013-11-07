@@ -33,7 +33,6 @@ christian.boelling@charite.de
 christian.a.boelling@gmail.com</dc:creator>
         <dc:contributor>Michael Weidlich
 michael.weidlich@charite.de</dc:contributor>
-        <owl:versionIRI rdf:resource="http://purl.org/see/rdo/1.0"/>
     </owl:Ontology>
     
 
@@ -305,12 +304,12 @@ This relation enables linking assertions to texts without explicitly creating re
         <rdfs:range rdf:resource="&rdo;agent"/>
         <rdfs:domain rdf:resource="&rdo;assertion"/>
         <owl:propertyChainAxiom rdf:parseType="Collection">
-            <rdf:Description rdf:about="&rdo;is_conjunctive_part_of"/>
-            <rdf:Description rdf:about="&rdo;is_assertion_made_by"/>
-        </owl:propertyChainAxiom>
-        <owl:propertyChainAxiom rdf:parseType="Collection">
             <rdf:Description rdf:about="&rdo;is_assertion_made_in"/>
             <rdf:Description rdf:about="&rdo;has_author"/>
+        </owl:propertyChainAxiom>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="&rdo;is_conjunctive_part_of"/>
+            <rdf:Description rdf:about="&rdo;is_assertion_made_by"/>
         </owl:propertyChainAxiom>
     </owl:ObjectProperty>
     <owl:Axiom>
@@ -334,12 +333,12 @@ Note that any assertion related to a report by this property will be inferred to
         <rdfs:domain rdf:resource="&rdo;assertion"/>
         <rdfs:range rdf:resource="&rdo;report_part"/>
         <owl:propertyChainAxiom rdf:parseType="Collection">
-            <rdf:Description rdf:about="&rdo;is_assertion_expressed_in"/>
-            <rdf:Description rdf:about="&rdo;is_lexical_part_of"/>
-        </owl:propertyChainAxiom>
-        <owl:propertyChainAxiom rdf:parseType="Collection">
             <rdf:Description rdf:about="&rdo;is_conjunctive_part_of"/>
             <rdf:Description rdf:about="&rdo;is_assertion_made_in"/>
+        </owl:propertyChainAxiom>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="&rdo;is_assertion_expressed_in"/>
+            <rdf:Description rdf:about="&rdo;is_lexical_part_of"/>
         </owl:propertyChainAxiom>
         <owl:propertyChainAxiom rdf:parseType="Collection">
             <rdf:Description rdf:about="&rdo;is_assertion_made_in"/>
@@ -581,13 +580,13 @@ Note that the term &apos;assertion&apos; carries an ambiguity in that it can ref
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&rdo;realizes"/>
-                <owl:someValuesFrom rdf:resource="&rdo;premise_role"/>
+                <owl:someValuesFrom rdf:resource="&rdo;agent_role"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&rdo;realizes"/>
-                <owl:someValuesFrom rdf:resource="&rdo;agent_role"/>
+                <owl:someValuesFrom rdf:resource="&rdo;premise_role"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
