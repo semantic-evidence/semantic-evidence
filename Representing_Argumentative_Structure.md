@@ -1,0 +1,5 @@
+# Representing argumentative structure #
+
+In SEE argumentative structure is represented at its foundational level of premises being used to infer a conclusion using the _`rdo:is_directly_inferred_from`_ property and its transitive superproperty _`rdo:is_inferred_from`_. This allows for a coherent representation of different argument forms and larger rhetorical structures which can be mapped onto their underlying assertions.
+
+SEE aims to capture arguments as they are presented in their sources rather than to evaluate their quality or to categorize them. How conclusive an argument is will typically depend on agent background knowledge or application-dependent requirements. The SEE design enables users to evaluate evidence according to their own, possibly domain- and application-specific criteria.
