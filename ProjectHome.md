@@ -13,7 +13,7 @@ SEE relies on **RDO (Reasoning and Discourse Ontology)** a lightweight OWL-vocab
   * **sources** through which claims are communicated (e.g., scientific articles, database records)
   * **agents** making the claims (e.g., scientists, corporate bodies, information processing devices)
 
-The current version of RDO is available [here](http://semantic-evidence.googlecode.com/svn/trunk/ontology/rdo.owl).
+The current version of RDO is available [here](../master/ontology/rdo.owl).
 
 [Read more](RDO_introduction.md) about RDO.
 
