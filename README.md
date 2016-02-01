@@ -4,9 +4,9 @@
 
 SEE is designed to enable Semantic Web compatible **representation of the fabric of observations, materials & methods, assumptions, reasoning and information sources** examined by researchers **to establish or evaluate** a scientific finding.
 
-SEE represents **evidence in terms of the argumentative structure of the supporting background** for a claim and **enables** representation of **consecutive layers of interpretation and attribution and different evaluations based on the same data**.
+SEE represents **evidence in terms of the argumentative structure of the supporting background** for a claim. It **enables** representation of **consecutive layers of interpretation and attribution and different evaluations based on the same data**.
 
-Read more about SEE.
+[Read more](SEE_overview.md) about SEE.
 
 SEE relies on **RDO (Reasoning and Discourse Ontology)** a lightweight OWL-vocabulary for representation of the relations among
 
