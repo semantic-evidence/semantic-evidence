@@ -6,7 +6,7 @@ SEE is designed to enable Semantic Web compatible **representation of the fabric
 
 SEE represents **evidence in terms of the argumentative structure of the supporting background** for a claim. It **enables** representation of **consecutive layers of interpretation and attribution and different evaluations based on the same data**.
 
-[Read more](wiki/SEE_overview.md) about SEE.
+[Read more](../wiki/SEE_overview.md) about SEE.
 
 SEE relies on **RDO (Reasoning and Discourse Ontology)** a lightweight OWL-vocabulary for representation of the relations among
 
@@ -17,7 +17,7 @@ SEE relies on **RDO (Reasoning and Discourse Ontology)** a lightweight OWL-vocab
 
 The current version of RDO is available here.
 
-Read more about RDO.
+[Read more](../wiki/RDO_introduction.md) about RDO.
 
 ##SEE Publication
 Bölling C., Weidlich M., and Holzhütter H.-G.: **SEE: structured representation of scientific evidence in the biomedical domain using Semantic Web techniques.** _Journal of Biomedical Semantics_ 2014 5(Suppl 1): S1.  
