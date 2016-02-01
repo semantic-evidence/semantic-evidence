@@ -6,7 +6,7 @@ SEE is designed to enable Semantic Web compatible **representation of the fabric
 
 SEE represents **evidence in terms of the argumentative structure of the supporting background** for a claim. It **enables** representation of **consecutive layers of interpretation and attribution and different evaluations based on the same data**.
 
-[Read more](SEE_overview.md) about SEE.
+[Read more](wiki/SEE_overview.md) about SEE.
 
 SEE relies on **RDO (Reasoning and Discourse Ontology)** a lightweight OWL-vocabulary for representation of the relations among
 
